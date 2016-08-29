@@ -747,6 +747,8 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   script.UnmountAll()
 
+  device_specific.FullOTA_InstallPostEnd()
+
   if OPTIONS.wipe_user_data:
     script.ShowProgress(0.1, 10)
     script.FormatPartition("/data")

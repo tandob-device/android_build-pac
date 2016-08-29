@@ -1788,6 +1788,9 @@ endif
 	$(hide) echo "$(PRODUCT_OTA_PUBLIC_KEYS)" > $(zip_root)/META/otakeys.txt
 	$(hide) echo "recovery_api_version=$(PRIVATE_RECOVERY_API_VERSION)" > $(zip_root)/META/misc_info.txt
 	$(hide) echo "fstab_version=$(PRIVATE_RECOVERY_FSTAB_VERSION)" >> $(zip_root)/META/misc_info.txt
+ifdef INCLUDE_OPEN_GAPPS
+        $(hide) if [ -s $(TARGET_DEVICE_DIR)/gapps/open_gapps.zip ]; then $(ACP) $(TARGET_DEVICE_DIR)/gapps/open_gapps.zip $(zip_root); fi
+endif
 ifdef BOARD_FLASH_BLOCK_SIZE
 	$(hide) echo "blocksize=$(BOARD_FLASH_BLOCK_SIZE)" >> $(zip_root)/META/misc_info.txt
 endif

@@ -1105,6 +1105,11 @@ class DeviceSpecificParams(object):
     used to install the image for the device's baseband processor."""
     return self._DoCall("FullOTA_InstallEnd")
 
+  def FullOTA_InstallPostEnd(self):
+    """Called at the end of full OTA installation; typically this is
+    used to install the extra zip files."""
+    return self._DoCall("FullOTA_InstallPostEnd")
+
   def FullOTA_PostValidate(self):
     """Called after installing and validating /system; typically this is
     used to resize the system partition after a block based installation."""
